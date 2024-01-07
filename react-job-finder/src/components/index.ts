@@ -1,0 +1,5 @@
+export {default as Navbar} from './Navbar/Navbar'
+export {default as Job} from './JobDiv/Job'
+export {default as value} from './ValueDiv/Value'
+export {default as Footer} from './FooterDiv/Footer'
+export {default as Search} from './SearchDiv/Search'
