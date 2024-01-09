@@ -1,64 +1,63 @@
-import { useEffect, useRef, useState } from "react";
+import {useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import { BsHouseDoor } from "react-icons/bs";
-import { CiLocationOn } from "react-icons/ci";
 
+import { useAppDispatch } from "../../hooks/hook";
+import { paramsData } from "../../store/JobData/JobData";
 export default function Search() {
-  const [jobName, setJobName] = useState<string>("");
+  const [jobName, setJobName] = useState("");
   const sltJobRemote = useRef<HTMLInputElement>(null);
   const sltJobDayPosted = useRef<HTMLSelectElement>(null);
-
+  const sltJobTime = useRef<HTMLSelectElement>(null);
+  const sltExperience = useRef<HTMLSelectElement>(null);
+  const [error, setError] = useState("");
+  const dispatch = useAppDispatch();
   return (
     <div className="searchDiv grid gap-10 bg-geryIsh rounded-[10px] p-[3rem]">
       <form action="">
-        <div
-          className="firstDiv flex justify-between items-center rounded-[8px]
-        gap-[10px] bg-white p-5 shadow-lg shadow-geryIsh-700 "
-        >
-          <div className="flex gap-2  items-center">
+        <div className="firstDiv flex justify-between items-center rounded-[8px] bg-white p-5 shadow-lg shadow-geryIsh-700">
+          <div className="flex gap-2 items-center flex-grow">
             <AiOutlineSearch className="text-[25px] icon" />
             <input
               type="text"
+              required
               value={jobName}
               onChange={(e) => setJobName(e.target.value)}
-              className="bg-transparent text-blueColor focus:outline-none w-[100%] "
+              className="bg-transparent text-blueColor focus:outline-none w-full"
               placeholder="Search Job Here..."
             />
-            <AiOutlineCloseCircle
-              onClick={() => setJobName("")}
-              className="text-[30px] text-[#a5a6a6] hover:text-textColor icon"
-            />
           </div>
-          <div className="flex gap-2  items-center">
-            <BsHouseDoor className="text-[25px] icon" />
-            <input
-              type="text"
-              disabled
-              className="bg-transparent text-blueColor focus:outline-none w-[100%] "
-              placeholder="Search By Company..."
-            />
-            <AiOutlineCloseCircle className="text-[30px] text-[#a5a6a6]  icon" />
-          </div>
-          <div className="flex gap-2  items-center">
-            <CiLocationOn className="text-[25px] icon" />
-            <input
-              type="text"
-              value="USA"
-              disabled
-              className="bg-transparent text-blueColor focus:outline-none w-[100%] "
-              placeholder="Search By Location..."
-            />
-            <AiOutlineCloseCircle
-              onClick={() => setJobName("")}
-              className="text-[30px] text-[#a5a6a6]  icon"
-            />
-          </div>
-          <button className="bg-blueColor h-full p-5 px-10 rounded-[10px] text-white cursor-pointer hover:bg-blue-300 transition duration-150">
+
+          <button
+            type="button"
+            onClick={() =>
+              jobName.length > 0 ? (
+                <>
+                  {dispatch(
+                    paramsData({
+                      jobName: jobName,
+                      jobDate: sltJobDayPosted.current?.value,
+                      jobRemote: String(sltJobRemote.current?.checked),
+                      jobTime: sltJobTime.current?.value,
+                      jobExperience: sltExperience.current?.value,
+                    })
+                  )}
+                  {setError("")}
+                </>
+              ) : (
+                setError("Job name is empty")
+              )
+            }
+            className="bg-blueColor h-full p-5 px-10 rounded-[10px] text-white cursor-pointer hover:bg-blue-300 transition duration-150"
+          >
             Search
           </button>
         </div>
+        <p className="font-semibold text-[16px] text-red-600 mt-3 ml-5">
+          {" "}
+          {error}
+        </p>
       </form>
+
       <div className="secDiv flex items-center gap-10 justify-center">
         <div className="singleSearch flex items-center gap-2">
           <label htmlFor="relveance" className="text-[#808080] font-semibold">
@@ -73,60 +72,62 @@ export default function Search() {
             />
             <label
               htmlFor="check"
-              className="cursor-pointer text-[16px] font-semibold text-textColor"
+              className="cursor-pointer text-[16px] font-medium text-textColor"
             >
               Remote
             </label>
           </form>
         </div>
         <div className="singleSearch flex items-center gap-2">
-          <label htmlFor="relveance" className="text-[#808080] font-semibold">
+          <label htmlFor="relveance" className="text-[#808080]  font-semibold">
             Sort by:
           </label>
           <select
             ref={sltJobDayPosted}
             id="relveance"
-            className="bg-white  rounded-[3px]  px-4 py-1"
+            className="bg-white cursor-pointer  rounded-[3px]  px-4 py-1"
           >
-            <option>today</option>
-            <option>3days</option>
-            <option>week</option>
-            <option>month</option>
-            <option>All</option>
+            <option value="today">Today</option>
+            <option value="3days">3Days</option>
+            <option value="week">Week</option>
+            <option value="month">Month</option>
+            <option value="all">All</option>
           </select>
         </div>
         <div className="singleSearch flex items-center gap-2">
           <label htmlFor="relveance" className="text-[#808080] font-semibold">
             Sort by:
           </label>
-          <select id="relveance" className="bg-white  rounded-[3px]  px-4 py-1">
-            <option value="">Relevance</option>
-            <option value="">Relevance</option>
-            <option value="">Relevance</option>
-            <option value="">Relevance</option>
+          <select
+            ref={sltJobTime}
+            id="relveance"
+            className="bg-white cursor-pointer  rounded-[3px]  px-4 py-1"
+          >
+            <option value="FULLTIME">Full time</option>
+            <option value="CONTRACTOR">Contractor</option>
+            <option value="PARTTIME">Part time</option>
+            <option value="INTERN">Intern</option>
           </select>
         </div>
         <div className="singleSearch flex items-center gap-2">
           <label htmlFor="relveance" className="text-[#808080] font-semibold">
             Sort by:
           </label>
-          <select id="relveance" className="bg-white  rounded-[3px]  px-4 py-1">
-            <option value="">Relevance</option>
-            <option value="">Relevance</option>
-            <option value="">Relevance</option>
-            <option value="">Relevance</option>
+          <select
+            ref={sltExperience}
+            id="relveance"
+            className="bg-white cursor-pointer  rounded-[3px]  px-4 py-1"
+          >
+            <option value="under_3_years_experience">
+              under 3 years experience
+            </option>
+            <option value="more_than_3_years_experience">
+              more than 3 years experience
+            </option>
+            <option value="no_experience">no experience</option>
+            <option value="no_degree">no degree</option>
           </select>
         </div>
-        <button
-          className="text-[#a1a1a1] cursor-pointer"
-          onClick={() => {
-
-            setJobName("");
-
-          }}
-        >
-          Clear All
-        </button>
       </div>
     </div>
   );

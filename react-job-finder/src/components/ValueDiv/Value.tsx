@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Value() {
   return (
     <div className="mb-[4rem] mt-[6rem]">
@@ -35,7 +33,7 @@ export default function Value() {
               />
             </div>
             <span className="font-semibold text-textColor text-[18px]">
-              Simplicity
+              Social Good
             </span>
           </div>
           <p className="text-[13px] text-textColor opacity-[.7] py-[1rem] font-semibold">
@@ -53,7 +51,7 @@ export default function Value() {
               />
             </div>
             <span className="font-semibold text-textColor text-[18px]">
-              Simplicity
+              Trust
             </span>
           </div>
           <p className="text-[13px] text-textColor opacity-[.7] py-[1rem] font-semibold">
@@ -67,11 +65,13 @@ export default function Value() {
           <h1 className="text-blueColor text-[30px] font-bold">
             Ready to switch a caree
           </h1>
-          <h2 className="text-textColor text-[25px] font-bold">Let's get strated!</h2>
+          <h2 className="text-textColor text-[25px] font-bold">
+            Let's get strated!
+          </h2>
         </div>
         <button className="border-[2px] rounded-[10px] py-[4px] px-[50px] text-[18px] font-semibold text-blueColor hover:bg-white border-blueColor">
-            Get Started
-          </button>
+          Get Started
+        </button>
       </div>
     </div>
   );

@@ -6,11 +6,22 @@ const initialState: DataType = {
   isLoading: false,
   error: null,
   data: null,
+  params: {
+    jobDate: '',
+    jobExperience: '',
+    jobName: '',
+    jobRemote: '',
+    jobTime: '',
+  },
 };
 export const JobData = createSlice({
   name: "jobData",
   initialState,
-  reducers: {},
+  reducers: {
+    paramsData: (state, action) => {
+ state.params=action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getJobData.pending, (state) => {
@@ -18,15 +29,16 @@ export const JobData = createSlice({
       })
 
       .addCase(getJobData.fulfilled, (state, action: PayloadAction<any>) => {
-        state.isLoading = false;
+        state.isLoading = true;
         state.error = null;
         state.data = action.payload;
       })
       .addCase(getJobData.rejected, (state, action: PayloadAction<any>) => {
-        state.isLoading = false;
+        state.isLoading = true;
         state.error = action.payload;
         state.data = [];
       });
   },
 });
 export default JobData.reducer;
+export const{paramsData} =JobData.actions

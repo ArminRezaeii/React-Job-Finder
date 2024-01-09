@@ -3,31 +3,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root{
-  font-family: 'Poppins', sans-serif;
+:root {
+  font-family: "Poppins", sans-serif;
 }
-body{
+body {
   background-color: white;
 }
-li{
+li {
   list-style: none;
   cursor: pointer;
   position: relative;
 }
-li:hover::before{
+li:hover::before {
   position: absolute;
-  content: '';
+  content: "";
   height: 4px;
   width: 100%;
   background-color: #2a68ff;
   right: 0;
   bottom: -10px;
   color: #2a68ff;
-
 }
-.icon{
+.icon {
   cursor: pointer;
 }
-.card{
-  background:url("https://as2.ftcdn.net/v2/jpg/05/15/13/39/1000_F_515133948_uBS1jPcbgmzOEQZlGotXeI6TMBHSaQ22.jpg");
-} 
+.card {
+  background: url("https://as2.ftcdn.net/v2/jpg/05/15/13/39/1000_F_515133948_uBS1jPcbgmzOEQZlGotXeI6TMBHSaQ22.jpg");
+}
+
+.loader {
+  border: 20px solid #eaf0f6;
+  border-radius: 50%;
+  border-top: 20px solid #2a68ff;
+  width: 70px;
+  height: 70px;
+  animation: spinner 4s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-left: 716px;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

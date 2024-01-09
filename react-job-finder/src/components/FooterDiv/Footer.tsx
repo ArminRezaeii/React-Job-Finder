@@ -1,4 +1,6 @@
-import { PiInstagramLogoFill } from "react-icons/pi";
+import { FaXTwitter } from "react-icons/fa6";
+import { CiLinkedin } from "react-icons/ci";
+import { FaGithub } from "react-icons/fa";
 
 export default function () {
   return (
@@ -19,8 +21,12 @@ export default function () {
           Company
         </span>
         <div className="grid gap-3">
-          <li className="text-white opacity-[0.7] hover:opacity-100">About us</li>
-          <li className="text-white opacity-[0.7] hover:opacity-100">Features</li>
+          <li className="text-white opacity-[0.7] hover:opacity-100">
+            About us
+          </li>
+          <li className="text-white opacity-[0.7] hover:opacity-100">
+            Features
+          </li>
           <li className="text-white opacity-[0.7] hover:opacity-100">New</li>
           <li className="text-white opacity-[0.7] hover:opacity-100">FAQ</li>
         </div>
@@ -32,8 +38,12 @@ export default function () {
         <div className="grid gap-3">
           <li className="text-white opacity-[0.7] hover:opacity-100">Events</li>
           <li className="text-white opacity-[0.7] hover:opacity-100">Promo</li>
-          <li className="text-white opacity-[0.7] hover:opacity-100">Req Demo</li>
-          <li className="text-white opacity-[0.7] hover:opacity-100">Careers</li>
+          <li className="text-white opacity-[0.7] hover:opacity-100">
+            Req Demo
+          </li>
+          <li className="text-white opacity-[0.7] hover:opacity-100">
+            Careers
+          </li>
         </div>
       </div>
 
@@ -42,11 +52,15 @@ export default function () {
           Resources
         </span>
         <div className="grid gap-3">
-          <li className="text-white opacity-[0.7] hover:opacity-100">Account</li>
+          <li className="text-white opacity-[0.7] hover:opacity-100">
+            Account
+          </li>
           <li className="text-white opacity-[0.7] hover:opacity-100">
             Support Center
           </li>
-          <li className="text-white opacity-[0.7] hover:opacity-100">Feedback</li>
+          <li className="text-white opacity-[0.7] hover:opacity-100">
+            Feedback
+          </li>
           <li className="text-white opacity-[0.7] hover:opacity-100">
             Contact Us
           </li>
@@ -61,9 +75,15 @@ export default function () {
             arminrezaei53@gmail.com
           </small>
           <div className="icons flex gap-4 py-[1rem]">
-            <PiInstagramLogoFill className="bg-white p-[8px] h-[35px] w-[35px] rounded-full icon text-blueColor" />
-            <PiInstagramLogoFill className="bg-white p-[8px] h-[35px] w-[35px] rounded-full icon text-blueColor" />
-            <PiInstagramLogoFill className="bg-white p-[8px] h-[35px] w-[35px] rounded-full icon text-blueColor" />
+            <a href="https://twitter.com/ArminRezaeeii">
+              <FaXTwitter className="bg-white p-[8px] h-[35px] w-[35px] rounded-full icon text-blueColor" />
+            </a>
+            <a href="https://www.linkedin.com/in/armin-rezaei-96615a277/">
+              <CiLinkedin className="bg-white p-[8px] h-[35px] w-[35px] rounded-full icon text-blueColor" />
+            </a>
+            <a href="https://github.com/ArminRezaeii">
+              <FaGithub className="bg-white p-[8px] h-[35px] w-[35px] rounded-full icon text-blueColor" />
+            </a>
           </div>
         </div>
       </div>
